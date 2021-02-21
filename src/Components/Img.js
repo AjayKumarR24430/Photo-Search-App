@@ -8,12 +8,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import {Modal, Button} from 'react-bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -61,13 +60,8 @@ const Img = (props) => {
                 {props.name[0]}
               </Avatar>
             }
-            action={
-              <IconButton aria-label="settings">
-                <MoreVertIcon />
-              </IconButton>
-            }
             title={props.name}
-            subheader={props.created_at}
+            subheader={props.created_at.substr(0,10)}
           />
           <CardMedia
             className={classes.media}
@@ -80,10 +74,10 @@ const Img = (props) => {
             </Typography>
           </CardContent>
           <CardActions disableSpacing>
-            <Button variant="primary" style={{width: 120}} onClick={handleShow}>
+            <div variant="primary" style={{width: 120, marginLeft: 10}} onClick={handleShow}>
                 Learn More
-            </Button>
-            <IconButton
+            </div>
+            <div
               className={clsx(classes.expand, {
                 [classes.expandOpen]: expanded,
               })}
@@ -92,7 +86,7 @@ const Img = (props) => {
               aria-label="show more"
             >
               <ExpandMoreIcon />
-            </IconButton>
+            </div>
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
@@ -107,29 +101,26 @@ const Img = (props) => {
           <Modal.Title>Photo Details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <img src= {props.url} width="400" height="300"/>
-          <div className="col-1">
+          <img src= {props.url} width="400" height="300" style={{marginLeft: 10, marginBottom: 30}}/>
+          <div>
             <ul>
               <li>
-              Uploaded By: {props.name}
-              Title: {props.title}
-              Description: {props.description}
-              Likes Count: {props.likes}
-              Location: {props.location}
-              Username: {props.username}
-              Twitter Username: {props.twitter}
-              Instagram Username: {props.instagram}
+              <b>Uploaded By :</b> {props.name} <br/>
+              <b>Title :</b> {props.title} <br/>
+              <b>Description :</b> {props.description} <br/>
+              <b>Likes Count :</b> {props.like_count} <br/>
+              <b>Location :</b> {props.location} <br/>
+              <b>Username :</b> {props.username} <br/>
+              <b>Twitter Username :</b> {props.twitter} <br/>
+              <b>Instagram Username :</b> {props.instagram} 
               </li>
             </ul>
           </div>
 
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose} style={{width: 100,marginRight: 40}}>
             Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
