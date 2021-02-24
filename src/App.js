@@ -4,7 +4,7 @@ import axios from 'axios';
 import './App.css';
 import ImageList from './Components/ImgList';
 import SearchForm from './Components/SearchPhotos';
-const APP_ID = '97nHEKIghaJRteSgIrQHMO5oaQZ0Bgvbcr0KRCV3siE';
+const APP_ID = '';
 
 export default class App extends Component {
 	constructor() {
